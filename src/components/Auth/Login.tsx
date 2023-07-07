@@ -4,9 +4,21 @@ import { useRouter } from 'next/router';
 function Login() {
 	const router = useRouter();
 
-	const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		router.push(`/ingresar/${event.target.ci.value}`);
+
+		const response = await fetch('/api/crear-token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				ci: event.target.ci.value,
+			}),
+		});
+		const data = await response.json();
+
+		router.push(`/ingresar/${data.token}`);
 	};
 
 	return (

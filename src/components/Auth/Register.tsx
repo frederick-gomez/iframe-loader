@@ -4,9 +4,21 @@ import { useRouter } from 'next/router';
 function Register() {
 	const router = useRouter();
 
-	const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		router.push(`/registrar/${event.target.ci.value}`);
+
+		const response = await fetch('/api/crear-token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				ci: event.target.ci.value,
+			}),
+		});
+		const data = await response.json();
+
+		router.push(`/registrar/${data.token}`);
 	};
 
 	return (
