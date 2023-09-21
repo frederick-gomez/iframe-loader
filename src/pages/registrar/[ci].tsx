@@ -10,7 +10,7 @@ const Registrar = () => {
 			const mensaje = event.data;
 			if (mensaje === 'OK') {
 				setTimeout(() => {
-					router.replace('/');
+					router.replace('/shop');
 				}, 1500);
 			}
 		};
@@ -26,8 +26,7 @@ const Registrar = () => {
 				src={`${process.env.NEXT_PUBLIC_IFRAME_URL}/registrar/${CI}`}
 				width={'100%'}
 				height={'100%'}
-				allow='camera; microphone;'
-			></iframe>
+				allow='camera; microphone;'></iframe>
 		</div>
 	);
 };

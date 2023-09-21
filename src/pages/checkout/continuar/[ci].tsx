@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const Ingresar = () => {
+const ContinuarPago = () => {
 	const router = useRouter();
 	const CI = router.query.ci;
 
@@ -10,7 +10,7 @@ const Ingresar = () => {
 			const mensaje = event.data;
 			if (mensaje === 'OK') {
 				setTimeout(() => {
-					router.replace('/shop');
+					router.replace('/checkout/ok');
 				}, 1500);
 			}
 		};
@@ -30,4 +30,4 @@ const Ingresar = () => {
 		</div>
 	);
 };
-export default Ingresar;
+export default ContinuarPago;

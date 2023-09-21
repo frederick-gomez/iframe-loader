@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-	return <main className='h-screen'>{children}</main>;
+	return <main className=''>{children}</main>;
 };
 
 export default Layout;
