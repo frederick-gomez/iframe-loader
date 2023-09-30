@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router';
 import CardIcon from './CardIcon';
 import MoneyIcon from './MoneyIcon';
+import userStore from '@/store/userStore';
 
 export default function Checkout() {
 	const router = useRouter();
+	const token = userStore((state) => state.token);
+	const cardInfo = userStore((state) => state.cards);
+	console.log(cardInfo);
 	const continueCheckout = () => {
-		router.replace('/checkout/continuar/12345678');
+		router.replace('/checkout/continuar/' + token);
 	};
 
 	return (
@@ -26,8 +30,9 @@ export default function Checkout() {
 							<div className='mb-6'>
 								<label className='block pb-1 text-sm font-semibold'>Número de Tarjeta</label>
 								<input
-									className='mb-3 w-full appearance-none rounded-sm px-4 py-1'
-									type='number'
+									className='w-full appearance-none rounded-sm px-4 py-1'
+									type='text'
+									defaultValue={cardInfo?.cardNumber}
 									placeholder='0000 0000 0000 0000'
 								/>
 							</div>
@@ -35,21 +40,30 @@ export default function Checkout() {
 							<div className='flex'>
 								<div>
 									<label className='mb-1 block text-sm font-semibold'>Nombre de la Tarjeta</label>
-									<input className='rounded-sm px-4 py-1 capitalize' type='text' />
+									<input
+										className='rounded-sm px-4 py-1 capitalize'
+										type='text'
+										defaultValue={cardInfo?.name}
+									/>
 								</div>
 
 								<div className='px-4'>
 									<label className='mb-1 block text-sm font-semibold'>Expiración</label>
 									<input
 										className='rounded-sm px-4 py-1 capitalize'
-										placeholder='MM / YY'
+										placeholder='MM / AA'
 										type='text'
+										defaultValue={cardInfo?.expiration}
 									/>
 								</div>
 
 								<div>
-									<label className='mb-1 block text-sm font-semibold'>Código CVV</label>
-									<input className='rounded-sm px-4 py-1 capitalize' type='number' />
+									<label className='mb-1 block text-sm font-semibold'>Código CVC</label>
+									<input
+										className='rounded-sm px-4 py-1 capitalize'
+										type='number'
+										defaultValue={cardInfo?.cvv}
+									/>
 								</div>
 							</div>
 						</form>

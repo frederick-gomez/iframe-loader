@@ -1,11 +1,15 @@
 import React, { ChangeEvent } from 'react';
 import { useRouter } from 'next/router';
+import userStore from '@/store/userStore';
 
 function Login() {
 	const router = useRouter();
+	const updateCi = userStore((state) => state.actions.updateCi);
+	const updateToken = userStore((state) => state.actions.updateToken);
 
 	const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		updateCi(event.target.ci.value);
 
 		const response = await fetch('/api/crear-token', {
 			method: 'POST',
@@ -18,7 +22,9 @@ function Login() {
 		});
 		const data = await response.json();
 
-		router.push(`/ingresar/${data.token}`);
+		updateToken(data.token);
+		// router.push(`/ingresar/${data.token}`);
+		router.push(`/shop`);
 	};
 
 	return (
