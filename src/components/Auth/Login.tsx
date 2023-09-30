@@ -23,8 +23,7 @@ function Login() {
 		const data = await response.json();
 
 		updateToken(data.token);
-		// router.push(`/ingresar/${data.token}`);
-		router.push(`/shop`);
+		router.push(`/ingresar/${data.token}`);
 	};
 
 	return (
