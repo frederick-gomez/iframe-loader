@@ -143,11 +143,11 @@ export default function PerfilPage() {
 			</div>
 			{showConfirmation && (
 				<Modal>
-					<div>
+					<div className='h-full'>
 						<iframe
 							src={`${process.env.NEXT_PUBLIC_IFRAME_URL}/ingresar/${userToken}`}
 							width={'100%'}
-							height={550}
+							height={800}
 							allow='camera; microphone;'></iframe>
 					</div>
 					<div className='mt-2 flex items-center justify-end'>
