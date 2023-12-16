@@ -52,7 +52,7 @@ const ResetPassword = () => {
 				</div>
 			) : (
 				<div className='flex h-screen items-center justify-center'>
-					<form onSubmit={handleSubmit} className='min-w-[300px]'>
+					<form onSubmit={handleSubmit} className='min-w-[350px]'>
 						<div className='mb-2'>
 							<label className='block' htmlFor='ci'>
 								Nro de Cedula
