@@ -51,8 +51,8 @@ const ResetPassword = () => {
 						allow='camera; microphone;'></iframe>
 				</div>
 			) : (
-				<div className='container mx-auto max-w-md my-12'>
-					<form onSubmit={handleSubmit}>
+				<div className='flex h-screen items-center justify-center'>
+					<form onSubmit={handleSubmit} className='min-w-[300px]'>
 						<div className='mb-2'>
 							<label className='block' htmlFor='ci'>
 								Nro de Cedula
